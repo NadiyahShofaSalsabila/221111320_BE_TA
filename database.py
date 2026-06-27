@@ -135,6 +135,16 @@ def save_stock_data(data):
     conn.commit()
     conn.close()
 
+def clear_stock_data():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM data_saham")
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
 def save_stock_data_bulk(data_list):
     conn = get_connection()
     cursor = conn.cursor()

@@ -12,7 +12,7 @@ from database import (
     init_db,
 
     # Data Saham
-    save_stock_data,
+    clear_stock_data,
     save_stock_data_bulk,
     get_all_stock_data,
 
@@ -83,7 +83,7 @@ def upload_stock_data():
         # =========================
         # READ CSV
         # =========================
-        df = pd.read_csv(file, sep=';')
+        df = pd.read_csv(file, sep=',')
 
         # =========================
         # CLEAN COLUMN NAMES
@@ -122,7 +122,12 @@ def upload_stock_data():
         ]
 
         # =========================
-        # BULK INSERT
+        # HAPUS DATA LAMA
+        # =========================
+        clear_stock_data()
+
+        # =========================
+        # BULK INSERT DATA BARU
         # =========================
         save_stock_data_bulk(data_list)
 
